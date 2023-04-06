@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import Search from './components/Search';
 import UserList from './components/UserList';
 import { useState,useEffect } from 'react';
-import { deleteUserById, getAllUsers } from './services/userServices';
+import { deleteUserById, editUser, getAllUsers } from './services/userServices';
 import OverLap from './components/OverLap';
 import { addUser } from './services/userServices';
 
@@ -22,7 +22,7 @@ function App() {
     })
   },[])
 
-  function addUserFormSubmit(ev){
+  function addUserFormSubmit(ev,id){
     ev.preventDefault()
     setIsLoading(true);
     const formData=new FormData(ev.currentTarget);
@@ -34,17 +34,31 @@ function App() {
       country:data.country
 
     }
-    addUser(data).then(res=>res.json()).then((data)=>{
-      console.log(users)
-      
-      setUsers((oldUsers)=>{
-        console.log(oldUsers)
-        return [...oldUsers,data.user]
-      });
-      
-      console.log(users)
+    if(!id){
+      addUser(data).then(res=>res.json()).then((data)=>{
+        console.log(users)
+        
+        setUsers((oldUsers)=>{
+          console.log(oldUsers)
+          return [...oldUsers,data.user]
+        });
+        
+        console.log(users)
+        setIsLoading(false);
+      })
+    }else{
+      editUser(id,data).then(res=>res.json()).then((serverData)=>{
+        setUsers((oldUsers)=>{
+          let id=serverData.user._id;
+          const newUsers=Array.from(oldUsers);
+          const indexToChange=newUsers.findIndex((newUser)=>newUser._id===id);
+          newUsers.splice(indexToChange,1,serverData.user)
+          return [...newUsers]
+        })
+      })
       setIsLoading(false);
-    })
+    }
+
     
   }
 

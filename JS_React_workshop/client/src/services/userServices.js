@@ -31,3 +31,15 @@ export async function addUser(user){
     return fetch(baseUrl+'/users',options);
 
 }
+
+export async function editUser(id,user){
+    let options={
+        method:'PUT',
+        headers:{}
+    }
+    options.headers['Content-Type']='application/json';
+    options.body=JSON.stringify(user);
+
+    return fetch(baseUrl+'/users/'+id,options);
+
+}

@@ -65,8 +65,8 @@ export default function UserList(props){
         setAddUserFormOpened(false)
       }
 
-      function addUserFormSubmitHandler(ev){
-        props.addUserFormSubmit(ev);
+      function addUserFormSubmitHandler(ev,id){
+        props.addUserFormSubmit(ev,id);
         closeAddEditForm();
       }
 
@@ -131,7 +131,7 @@ export default function UserList(props){
                 </thead>
                 <tbody>
                     
-                   {props.users.map((user)=><UserRow key={user._id} user={user} getInfo={getInfo} setDeleteConfirmationOpened={setDeleteConfirmationOpened} openDeleteUserForm={openDeleteUserForm}/>)}
+                   {props.users.map((user)=><UserRow key={user._id} user={user} openAddUserForm={openAddUserForm} getInfo={getInfo} setDeleteConfirmationOpened={setDeleteConfirmationOpened} openDeleteUserForm={openDeleteUserForm}/>)}
                 </tbody>
             </table>
          </div>
