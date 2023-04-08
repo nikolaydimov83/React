@@ -56,8 +56,8 @@ export default function UserList(props){
       }*/
     
       async function closeUserDetails(){
-        setUser(null)
-        setUserDetailsOpened(false)
+        setUser(null);
+        setUserDetailsOpened(false);
       }
     
       async function closeAddEditForm(ev){
