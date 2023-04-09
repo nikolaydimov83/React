@@ -62,8 +62,8 @@ export default function UserList(props){
     
       async function closeAddEditForm(ev){
        
-        setUser(null)
-        setAddUserFormOpened(false)
+        setUser(null);
+        setAddUserFormOpened(false);
       }
 
       function addUserFormSubmitHandler(ev,id){
