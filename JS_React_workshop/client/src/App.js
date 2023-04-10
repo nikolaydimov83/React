@@ -39,7 +39,7 @@ function App() {
         console.log(users)
         
         setUsers((oldUsers)=>{
-          console.log(oldUsers)
+ 
           return [...oldUsers,data.user]
         });
         
