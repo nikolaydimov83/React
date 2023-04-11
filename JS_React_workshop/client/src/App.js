@@ -43,7 +43,7 @@ function App() {
           return [...oldUsers,data.user]
         });
         
-        console.log(users)
+      
         setIsLoading(false);
       })
     }else{
