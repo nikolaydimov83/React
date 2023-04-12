@@ -36,7 +36,7 @@ function App() {
     }
     if(!id){
       addUser(data).then(res=>res.json()).then((data)=>{
-        console.log(users)
+        
         
         setUsers((oldUsers)=>{
  
