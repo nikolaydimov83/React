@@ -52,7 +52,7 @@ function App() {
           let id=serverData.user._id;
           const newUsers=Array.from(oldUsers);
           const indexToChange=newUsers.findIndex((newUser)=>newUser._id===id);
-          newUsers.splice(indexToChange,1,serverData.user)
+          newUsers.splice(indexToChange,1,serverData.user);
           return [...newUsers]
         })
       })
